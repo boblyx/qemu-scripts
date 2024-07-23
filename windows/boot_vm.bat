@@ -8,14 +8,15 @@ set IMG_SIZE=16G
 set IMG_FMT=qcow2
 
 (call %QEMU% ^
--accel whpx ^
+-accel whpx,kernel-irqchip=off ^
 -smp 4 ^
 -cpu qemu64-v1 ^
 -machine q35 ^
 -drive file=%IMG_PATH% ^
 -m 7680M ^
 --accel tcg,thread=multi ^
--display gtk ^
+-display gtk,gl=on ^
+-display default,show-cursor=on ^
 -usb ^
 -device usb-tablet ^
 -nic user)
